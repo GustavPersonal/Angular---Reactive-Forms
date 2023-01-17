@@ -1,0 +1,24 @@
+<p>Start editing to see some magic happen :)</p>
+
+<pre>
+reason.value=[{{ this.myForm.get('reason').value }}]
+</pre>
+
+<div [formGroup]="myForm">
+  <div>
+    <mat-form-field class="form-fullwidth">
+      <mat-label>reasons</mat-label>
+      <mat-select formControlName="reason" required>
+        <mat-option *ngFor="let reason of reasons" [value]="reason">
+          {{ reason.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" *ngIf="provideOtherReason">
+      <mat-label>provide other reason...</mat-label>
+      <input matInput formControlName="otherReason" />
+    </mat-form-field>
+  </div>
+</div>
