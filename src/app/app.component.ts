@@ -44,8 +44,9 @@ export class AppComponent {
 
   public myForm: FormGroup;
 
-  public get reason(): AbstractControl {
-    return this.myForm.get('reason');
+  public get reason() {
+    let x = this.myForm.get('reason');
+    return x;
   }
 
   constructor(private fb: FormBuilder) {
@@ -61,11 +62,7 @@ export class AppComponent {
       console.log('(valueChange) reason value', data.reason.value);
       console.log('(valueChange) reason description', data.reason.description);
 
-      if (data.reason.value == Reasons.OTHER) {
-        this.provideOtherReason = true;
-      } else {
-        this.provideOtherReason = false;
-      }
+      this.provideOtherReason = data.reason.value == Reasons.OTHER;
     });
   }
 }
